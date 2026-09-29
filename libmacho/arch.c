@@ -1327,4 +1327,13 @@ cpu_subtype_t cpusubtype2)
 	}
 	return((cpu_subtype_t)-1); /* logically can't get here */
 }
+
+const char *
+macho_arch_name_for_cpu_type(
+cpu_type_t cputype,
+cpu_subtype_t cpusubtype)
+{
+    const NXArchInfo *ai = NXGetArchInfoFromCpuType(cputype, cpusubtype);
+    return ai ? ai->name : NULL;
+}
 #endif /* !defined(RLD) */
